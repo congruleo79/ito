@@ -265,7 +265,7 @@
   width: min(100%, 620px);
   aspect-ratio: 7 / 5;
   justify-self: center;
-  align-self: start;
+  align-self: center;
   padding: 28px;
   border-radius: 34px;
   background: #fffefa;
@@ -415,7 +415,7 @@
   background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.68), transparent 24%), linear-gradient(155deg, #fbffe7, #d9ed92 52%, #9ef01a);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (orientation: portrait) {
   .play-stage {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -424,6 +424,26 @@
 
   .deck-zone {
     min-height: 310px;
+  }
+
+  .question-card {
+    align-self: start;
+  }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .play-stage {
+    grid-template-columns: minmax(180px, 34vw) minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+  }
+
+  .deck-zone {
+    min-height: 260px;
+  }
+
+  .question-card {
+    width: min(100%, 520px);
   }
 }
 
