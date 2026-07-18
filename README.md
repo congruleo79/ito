@@ -1,6 +1,6 @@
 # GitHub Pages Deployment
 
-This app is prepared for deployment to GitHub Pages with GitHub Actions.
+This app is prepared for deployment to GitHub Pages with GitHub Actions!
 
 ## What is already configured
 
@@ -12,19 +12,19 @@ This app is prepared for deployment to GitHub Pages with GitHub Actions.
 
 1. Initialize git in this folder if you have not already:
 
-	```bash
-	git init
-	git add .
-	git commit -m "Initial site"
-	```
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial site"
+   ```
 
 2. Create a GitHub repository and connect it as the remote:
 
-	```bash
-	git remote add origin https://github.com/YOUR-USER/YOUR-REPO.git
-	git branch -M main
-	git push -u origin main
-	```
+   ```bash
+   git remote add origin https://github.com/YOUR-USER/YOUR-REPO.git
+   git branch -M main
+   git push -u origin main
+   ```
 
 3. In GitHub, open `Settings > Pages`.
 
