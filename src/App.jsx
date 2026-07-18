@@ -153,7 +153,13 @@ function App() {
 
       <section className="play-stage">
         <div className="deck-column">
-          <div className={`deck-zone ${isDrawing ? "is-drawing" : ""}`}>
+          <button
+            type="button"
+            className={`deck-zone deck-trigger ${isDrawing ? "is-drawing" : ""}`}
+            onClick={handleDraw}
+            disabled={isDrawing}
+            aria-label={isDrawing ? "Shuffling the pile" : "Draw a question card"}
+          >
             <div className="pile-shadow"></div>
             <article className="pile-card pile-card-a" aria-hidden="true">
               <span>guess it</span>
@@ -164,14 +170,12 @@ function App() {
             <article className="pile-card pile-card-c" aria-hidden="true">
               <span>no bluff</span>
             </article>
-            <article className="pile-card pile-card-d" aria-hidden="true"></article>
+            <article className="pile-card pile-card-d" aria-hidden="true">
+              <span>Draw a card</span>
+            </article>
             <article className="launch-card" aria-hidden="true">
               <span>?</span>
             </article>
-          </div>
-
-          <button type="button" className="draw-cta" onClick={handleDraw} disabled={isDrawing}>
-            {isDrawing ? "Shuffling the pile..." : "Draw a question card"}
           </button>
         </div>
 
@@ -187,7 +191,7 @@ function App() {
         ) : (
           <article className="question-card question-card-placeholder">
             <div className="placeholder-copy">
-              <p>Draw a card</p>
+              <p>Click the pile to draw a card</p>
             </div>
           </article>
         )}

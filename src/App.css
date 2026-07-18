@@ -123,7 +123,7 @@
 
 .deck-column {
   display: grid;
-  gap: 18px;
+  gap: 0;
 }
 
 .deck-zone {
@@ -131,6 +131,29 @@
   min-height: 430px;
   display: grid;
   place-items: center;
+}
+
+.deck-trigger {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.deck-trigger:hover:not(:disabled) {
+  transform: translateY(-4px) rotate(-1deg);
+}
+
+.deck-trigger:focus-visible {
+  outline: 4px solid rgba(31, 41, 55, 0.5);
+  outline-offset: 6px;
+  border-radius: 28px;
+}
+
+.deck-trigger:disabled {
+  cursor: progress;
 }
 
 .pile-shadow {
@@ -188,6 +211,7 @@
 .pile-card-d {
   background: repeating-linear-gradient(-45deg, #fff 0, #fff 18px, #ff4d6d 18px, #ff4d6d 36px, #00c2ff 36px, #00c2ff 54px, #4ade80 54px, #4ade80 72px);
   transform: rotate(13deg) translateX(26px);
+  animation: top-card-wiggle 2.6s ease-in-out infinite;
 }
 
 .launch-card {
@@ -209,9 +233,39 @@
   animation: launch 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.deck-trigger .pile-card,
+.deck-trigger .launch-card,
+.deck-trigger .pile-shadow {
+  transition: transform 160ms ease;
+}
+
+.deck-trigger:hover:not(:disabled) .pile-card-a {
+  transform: rotate(-18deg) translate(-22px, -4px);
+}
+
+.deck-trigger:hover:not(:disabled) .pile-card-b {
+  transform: rotate(-9deg) translate(-10px, -3px);
+}
+
+.deck-trigger:hover:not(:disabled) .pile-card-c {
+  transform: rotate(8deg) translate(15px, -3px);
+}
+
+.deck-trigger:hover:not(:disabled) .pile-card-d {
+  transform: rotate(15deg) translate(30px, -4px);
+}
+
+.pile-card-d span {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 0 rgba(31, 41, 55, 0.12);
+}
+
 .question-card {
   position: relative;
-  min-height: 430px;
+  width: min(100%, 620px);
+  aspect-ratio: 7 / 5;
+  justify-self: center;
+  align-self: start;
   padding: 28px;
   border-radius: 34px;
   background: #fffefa;
@@ -239,8 +293,7 @@
   align-items: center;
 }
 
-.card-badge,
-.card-suit {
+.card-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -261,8 +314,12 @@
 }
 
 .card-suit {
-  color: #374151;
-  text-align: center;
+  color: rgba(31, 41, 55, 0.7);
+  text-align: right;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .card-spacer {
@@ -291,6 +348,7 @@
 }
 
 .question-card-placeholder {
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -361,43 +419,106 @@
   .play-stage {
     grid-template-columns: 1fr;
     min-height: auto;
+    gap: 20px;
   }
 
   .deck-zone {
-    min-height: 360px;
+    min-height: 310px;
   }
 }
 
 @media (max-width: 640px) {
   .app-shell {
     width: min(100%, calc(100% - 20px));
-    padding: 16px 0 28px;
+    padding: 12px 0 20px;
+  }
+
+  .play-stage {
+    gap: 14px;
+  }
+
+  .deck-column {
+    gap: 12px;
+  }
+
+  .deck-zone {
+    min-height: 248px;
+  }
+
+  .pile-shadow {
+    inset: auto 34px 28px;
+    height: 40px;
   }
 
   .question-card {
-    padding: 22px 18px;
-    border-radius: 28px;
+    width: min(100%, 340px);
+    padding: 18px 16px;
+    border-radius: 24px;
   }
 
   .question-card h2 {
-    margin-top: 26px;
+    margin-top: 18px;
+    font-size: clamp(1.35rem, 6vw, 1.95rem);
   }
 
   .pile-card,
   .launch-card {
-    width: 180px;
-    border-radius: 24px;
+    width: 148px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+  }
+
+  .pile-card span,
+  .launch-card span {
+    padding: 8px 10px;
+  }
+
+  .question-card::before {
+    inset: 10px;
+    border-radius: 18px;
   }
 
   .draw-cta {
     width: 100%;
     justify-content: center;
     text-align: center;
+    padding: 12px 18px;
+    font-size: 0.88rem;
   }
 
   .card-topline {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .card-badge {
+    padding: 6px 10px;
+    font-size: 0.72rem;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .card-badge {
+    box-shadow: 0 4px 0 rgba(255, 77, 109, 0.28);
+    flex: 0 0 auto;
+  }
+
+  .card-suit {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 0.66rem;
+    line-height: 1.2;
+  }
+
+  .placeholder-copy {
+    padding: 12px;
+  }
+
+  .placeholder-copy p {
+    font-size: clamp(1.2rem, 6vw, 1.8rem);
   }
 }
 
@@ -440,6 +561,21 @@
 
   to {
     transform: rotate(18deg) translate(30px, -8px);
+  }
+}
+
+@keyframes top-card-wiggle {
+  0%,
+  100% {
+    transform: rotate(13deg) translateX(26px);
+  }
+
+  35% {
+    transform: rotate(15deg) translate(30px, -3px);
+  }
+
+  65% {
+    transform: rotate(11deg) translate(22px, 2px);
   }
 }
 
