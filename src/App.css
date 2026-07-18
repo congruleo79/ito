@@ -433,17 +433,40 @@
 
 @media (max-width: 900px) and (orientation: landscape) {
   .play-stage {
-    grid-template-columns: minmax(180px, 34vw) minmax(0, 1fr);
+    grid-template-columns: minmax(150px, 28vw) minmax(0, 1fr);
     gap: 18px;
-    align-items: start;
+    align-items: center;
+    min-height: calc(100vh - 40px);
+  }
+
+  .deck-column,
+  .question-card {
+    align-self: center;
   }
 
   .deck-zone {
-    min-height: 260px;
+    min-height: 220px;
   }
 
   .question-card {
     width: min(100%, 520px);
+  }
+
+  .pile-card,
+  .launch-card {
+    width: 128px;
+    border-radius: 18px;
+    font-size: 0.78rem;
+  }
+
+  .pile-card span,
+  .launch-card span {
+    padding: 7px 9px;
+  }
+
+  .pile-shadow {
+    inset: auto 22px 24px;
+    height: 34px;
   }
 }
 
