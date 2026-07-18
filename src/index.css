@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee:wght@400&family=Nunito:wght@500;700;800&display=swap");
+
+:root {
+  --display-font: "Bungee", cursive;
+  --body-font: "Nunito", sans-serif;
+  font-family: var(--body-font);
+  line-height: 1.5;
+  font-weight: 700;
+  color: #1f2937;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.55), transparent 28%), linear-gradient(180deg, #ffcad4 0%, #ffd166 28%, #8ef6e4 64%, #9bf6ff 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(255, 255, 255, 0.7), transparent 18%), radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.45), transparent 14%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 14px, rgba(255, 255, 255, 0.04) 14px, rgba(255, 255, 255, 0.04) 28px),
+    linear-gradient(180deg, #ffcad4 0%, #ffd166 28%, #8ef6e4 64%, #9bf6ff 100%);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
